@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</title>
+    <title>طلب الخدمة - 𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</title>
     <style>
-        /* تنسيقات عامة */
         body {
             font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #0d0d0d; /* لون خلفية أغمق */
+            background-color: #0d0d0d;
             color: #fff;
         }
 
-        /* الهيدر */
         header {
             background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
             color: #fff;
@@ -46,106 +44,58 @@
             color: #bbb;
         }
 
-        /* القائمة */
-        nav {
-            background-color: #111;
-            padding: 20px 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.2em;
-            padding: 10px 20px;
-            border-radius: 30px;
-            background: linear-gradient(45deg, #333, #444);
-            transition: all 0.3s ease;
-        }
-        nav a:hover {
-            background: linear-gradient(45deg, #25D366, #128C7E);
-            color: #000;
-            transform: scale(1.1);
-        }
-
-        /* الحاوية */
         .container {
-            max-width: 1200px;
+            max-width: 800px;
             margin: 40px auto;
             padding: 20px;
-        }
-
-        /* الأقسام */
-        .section {
-            margin-bottom: 50px;
-            text-align: center;
-        }
-        .section h2 {
-            font-size: 2.8em;
-            margin-bottom: 20px;
-            color: #25D366;
-            text-transform: uppercase;
-        }
-        .section p {
-            font-size: 1.3em;
-            color: #bbb;
-        }
-
-        /* صناديق الأسعار */
-        .prices {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-        .price-box {
-            flex: 1;
-            max-width: 350px;
             background: #111;
-            border: 2px solid #333;
             border-radius: 15px;
-            padding: 20px;
-            text-align: center;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
         }
-        .price-box:hover {
-            border-color: #25D366;
-            transform: scale(1.1);
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
-        .price-box h3 {
-            margin-bottom: 15px;
-            font-size: 2em;
+
+        label {
+            font-size: 1.3em;
+            color: #25D366;
+        }
+
+        input, select {
+            padding: 15px;
+            font-size: 1.1em;
+            background-color: #222;
+            border: 2px solid #333;
+            border-radius: 10px;
             color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease;
         }
-        .price-box p {
-            font-size: 1.6em;
-            color: #bbb;
+        input:focus, select:focus {
+            border-color: #25D366;
         }
+
         .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 30px;
+            padding: 15px;
             font-size: 1.2em;
             font-weight: bold;
             color: #000;
-            text-decoration: none;
             background: linear-gradient(45deg, #25D366, #128C7E);
             border: none;
             border-radius: 50px;
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
-        }
-        .btn:hover {
-            background: linear-gradient(45deg, #128C7E, #25D366);
-            transform: scale(1.1);
+            cursor: pointer;
         }
 
-        /* الفوتر */
+        .btn:hover {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+            transform: scale(1.05);
+        }
+
         footer {
             background-color: #111;
             color: #bbb;
@@ -158,158 +108,68 @@
             margin: 0;
             font-size: 1.2em;
         }
+
+        .alert-message {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .alert-message p {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff0000;
+            cursor: pointer;
+        }
+        .alert-message .note {
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</h1>
-    <p>أفضل منصة لشحن ببجي وزيادة متابعين ولايكات تيك توك، انستغرام، فيسبوك وتلغرام</p>
+    <h1>طلب الخدمة - 𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</h1>
+    <p>يرجى إدخال التفاصيل أدناه لإكمال طلبك</p>
 </header>
 
-<nav>
-    <a href="#pubg">شحن ببجي</a>
-    <a href="#tiktok">تيك توك</a>
-    <a href="#instagram">انستغرام</a>
-    <a href="#free-services">خدمات مجانية</a>
-</nav>
+<div class="alert-message">
+    <p id="cash-number" onclick="copyToClipboard()">رقم الكاش: 01070849331</p>
+    <p class="note">سيتم استلام طلبك عند تحويل المال.<br>اذا ارسلت طلب بدون تحويل المال فستكون عمليه فاشله.</p>
+</div>
 
 <div class="container">
-    <div id="pubg" class="section">
-        <h2>خدمات شحن ببجي</h2>
-        <div class="prices">
-            <div class="price-box">
-                <h3>60 UC</h3>
-                <p>55 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%2060%20UC%20ببسعر%2055%20EGP%20لعبة%20ببجي" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>120 UC</h3>
-                <p>109 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%20120%20UC%20ببسعر%20109%20EGP%20لعبة%20ببجي" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-        </div>
-        <p>يمكنك طلب كمية أكبر أو أقل، كل ما عليك هو الضغط على "اطلب الآن"، وعند التواصل معي، أخبرني بالكمية التي ترغب بها.</p>
-    </div>
+    <form id="order-form">
+        <label for="name">اسمك</label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
 
-    <div id="tiktok" class="section">
-        <h2>أسعار تيك توك</h2>
-        <div class="prices">
-            <div class="price-box">
-                <h3>1000 متابع</h3>
-                <p>101 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20متابع%20تيك%20توك%20بسعر%20101%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>1000 لايك</h3>
-                <p>10 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20لايك%20تيك%20تو%20بسعر%2010%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>10,000 مشاهدة</h3>
-                <p>7 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%2010000%20مشاهدة%20ثابتة%20بسعر%207%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>1000 مشاركه</h3>
-                <p>7 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20مشاركة%20ثابتة%20تيك%20توك%20بسعر%207%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>5000 مشاركة</h3>
-                <p>5 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%205000%20مشاركة%20تيك%20توك%20بسعر%205%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-        </div>
-        <p>يمكنك طلب كمية أكبر أو أقل، كل ما عليك هو الضغط على "اطلب الآن"، وعند التواصل معي، أخبرني بالكمية التي ترغب بها.</p>
-    </div>
+        <label for="payment_number">رقم التحويل</label>
+        <input type="text" id="payment_number" name="payment_number" placeholder="أدخل رقم التحويل" required>
 
-    <div id="instagram" class="section">
-        <h2>أسعار إنستغرام</h2>
-        <div class="prices">
-            <div class="price-box">
-                <h3>1000 متابع</h3>
-                <p>105 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20متابع%20إنستغرام%20بسعر%20105%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>1000 لايك</h3>
-                <p>15 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20لايك%20إنستغرام%20بسعر%2015%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>10,000 مشاهدة</h3>
-                <p>10 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%2010000%20مشاهدة%20إنستغرام%20بسعر%2010%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-            <div class="price-box">
-                <h3>1000 تعليق</h3>
-                <p>20 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20تعليق%20إنستغرام%20بسعر%2020%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-        </div>
-        <p>يمكنك طلب كمية أكبر أو أقل، كل ما عليك هو الضغط على "اطلب الآن"، وعند التواصل معي، أخبرني بالكمية التي ترغب بها.</p>
-    </div>
+        <label for="contact_number">رقم التواصل</label>
+        <input type="text" id="contact_number" name="contact_number" placeholder="أدخل رقم هاتفك للتواصل" required>
 
-    <div id="free-services" class="section">
-        <h2>خدمات مجانية</h2>
-        <div class="prices">
-            <div class="price-box">
-                <h3>1000 مشاهدة</h3>
-                <p>0 EGP</p>
-                <a href="https://wa.me/201097169122?text=أريد%20شراء%201000%20مشاهدة%20مجانية%20بسعر%200%20EGP" 
-                   target="_blank" 
-                   class="btn">
-                   اطلب الآن
-                </a>
-            </div>
-        </div>
-        <p>يمكنك طلب كمية أكبر أو أقل، كل ما عليك هو الضغط على "اطلب الآن"، وعند التواصل معي، أخبرني بالكمية التي ترغب بها.</p>
-    </div>
+        <label for="service_type">ما النوع</label>
+        <select id="service_type" name="service_type" required>
+            <option value="followers">متابعين</option>
+            <option value="likes">لايكات</option>
+            <option value="views">مشاهدات</option>
+            <option value="comments">تعليقات</option>
+            <option value="shares">مشاركات</option>
+        </select>
+
+        <label for="platform">المنصة</label>
+        <select id="platform" name="platform" required>
+            <option value="tiktok">تيك توك</option>
+            <option value="instagram">إنستغرام</option>
+            <option value="facebook">فيس بوك</option>
+        </select>
+
+        <label for="quantity">عدد التزويد</label>
+        <input type="number" id="quantity" name="quantity" placeholder="أدخل العدد المطلوب" required>
+
+        <button type="submit" class="btn">إرسال الطلب</button>
+    </form>
 </div>
 
 <footer>
@@ -317,6 +177,50 @@
     <p>WhatsApp: 01097169122</p>
     <p>Telegram: @DEEPSTORE00</p>
 </footer>
+
+<script>
+    function copyToClipboard() {
+        const cashNumber = document.getElementById("cash-number").textContent.split(":")[1].trim();
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        tempInput.value = cashNumber;
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("تم نسخ رقم الكاش: " + cashNumber);
+    }
+
+    document.getElementById("order-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const paymentNumber = document.getElementById("payment_number").value;
+        const contactNumber = document.getElementById("contact_number").value;
+        const serviceType = document.getElementById("service_type").value;
+        const platform = document.getElementById("platform").value;
+        const quantity = document.getElementById("quantity").value;
+
+        const message = `طلب جديد من: ${name}\nرقم التحويل: ${paymentNumber}\nرقم التواصل: ${contactNumber}\nالنوع: ${serviceType}\nالمنصة: ${platform}\nالعدد المطلوب: ${quantity}`;
+
+        const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن الخاص بالبوت
+        const chatId = "7862056955";  // معرف الدردشة الذي زودتني به
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("تم إرسال الطلب بنجاح!");
+                } else {
+                    alert("حدث خطأ في إرسال الطلب.");
+                }
+            })
+            .catch(error => {
+                alert("حدث خطأ في الاتصال بالبوت.");
+            });
+    });
+</script>
 
 </body>
 </html>
