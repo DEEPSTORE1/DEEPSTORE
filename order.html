@@ -143,9 +143,6 @@
         <label for="name">اسمك</label>
         <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
 
-        <label for="nickname">النك</label>
-        <input type="text" id="nickname" name="nickname" placeholder="أدخل النك" required>
-
         <label for="payment_number">رقم التحويل</label>
         <input type="text" id="payment_number" name="payment_number" placeholder="أدخل رقم التحويل" required>
 
@@ -200,7 +197,6 @@
         event.preventDefault();
 
         const name = document.getElementById("name").value;
-        const nickname = document.getElementById("nickname").value;
         const paymentNumber = document.getElementById("payment_number").value;
         const contactNumber = document.getElementById("contact_number").value;
         const serviceType = document.getElementById("service_type").value;
@@ -208,7 +204,7 @@
         const quantity = document.getElementById("quantity").value;
         const link = document.getElementById("link").value;
 
-        const message = `طلب جديد من: ${name}\nالنك: ${nickname}\nرقم التحويل: ${paymentNumber}\nرقم التواصل: ${contactNumber}\nالنوع: ${serviceType}\nالمنصة: ${platform}\nالعدد المطلوب: ${quantity}\nالرابط: ${link}`;
+        const message = `طلب جديد من: ${name}\nرقم التحويل: ${paymentNumber}\nرقم التواصل: ${contactNumber}\nالنوع: ${serviceType}\nالمنصة: ${platform}\nالعدد المطلوب: ${quantity}\nالرابط: ${link}`;
 
         const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن الخاص بالبوت
         const chatId = "7862056955";  // معرف الدردشة الذي زودتني به
