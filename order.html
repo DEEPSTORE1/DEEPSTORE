@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب الخدمة - 𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</title>
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0d0d0d;
+            color: #fff;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e1e2f, #3a3a5c);
+            color: #fff;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 10px;
+            background: linear-gradient(90deg, #25D366, #128C7E);
+            border-radius: 50px;
+        }
+        header h1 {
+            font-size: 3.5em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        header p {
+            font-size: 1.5em;
+            margin-top: 15px;
+            color: #bbb;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #111;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 1.3em;
+            color: #25D366;
+        }
+
+        input, select {
+            padding: 15px;
+            font-size: 1.1em;
+            background-color: #222;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, select:focus {
+            border-color: #25D366;
+        }
+
+        .btn {
+            padding: 15px;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #000;
+            background: linear-gradient(45deg, #25D366, #128C7E);
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #128C7E, #25D366);
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #111;
+            color: #bbb;
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            border-top: 2px solid #333;
+        }
+        footer p {
+            margin: 0;
+            font-size: 1.2em;
+        }
+
+        .alert-message {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .alert-message p {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #ff0000;
+            cursor: pointer;
+        }
+        .alert-message .note {
+            font-size: 2em;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>طلب الخدمة - 𝑫𝑬𝑬𝑷 𝑫𝑻𝑶𝑹𝑬</h1>
+    <p>يرجى إدخال التفاصيل أدناه لإكمال طلبك</p>
+</header>
+
+<div class="alert-message">
+    <p id="cash-number" onclick="copyToClipboard()">رقم الكاش: 01070849331</p>
+    <p class="note">سيتم استلام طلبك عند تحويل المال.<br>اذا ارسلت طلب بدون تحويل المال فستكون عمليه فاشله.</p>
+</div>
+
+<div class="container">
+    <form id="order-form">
+        <label for="name">اسمك</label>
+        <input type="text" id="name" name="name" placeholder="أدخل اسمك" required>
+
+        <label for="payment_number">رقم التحويل</label>
+        <input type="text" id="payment_number" name="payment_number" placeholder="أدخل رقم التحويل" required>
+
+        <label for="contact_number">رقم التواصل</label>
+        <input type="text" id="contact_number" name="contact_number" placeholder="أدخل رقم هاتفك للتواصل" required>
+
+        <label for="service_type">ما النوع</label>
+        <select id="service_type" name="service_type" required>
+            <option value="followers">متابعين</option>
+            <option value="likes">لايكات</option>
+            <option value="views">مشاهدات</option>
+            <option value="comments">تعليقات</option>
+            <option value="shares">مشاركات</option>
+        </select>
+
+        <label for="platform">المنصة</label>
+        <select id="platform" name="platform" required>
+            <option value="tiktok">تيك توك</option>
+            <option value="instagram">إنستغرام</option>
+            <option value="facebook">فيس بوك</option>
+        </select>
+
+        <label for="quantity">عدد التزويد</label>
+        <input type="number" id="quantity" name="quantity" placeholder="أدخل العدد المطلوب" required>
+
+        <button type="submit" class="btn">إرسال الطلب</button>
+    </form>
+</div>
+
+<footer>
+    <p>Developed by mohamed okasha</p>
+    <p>WhatsApp: 01097169122</p>
+    <p>Telegram: @DEEPSTORE00</p>
+</footer>
+
+<script>
+    function copyToClipboard() {
+        const cashNumber = document.getElementById("cash-number").textContent.split(":")[1].trim();
+        const tempInput = document.createElement("input");
+        document.body.appendChild(tempInput);
+        tempInput.value = cashNumber;
+        tempInput.select();
+        document.execCommand("copy");
+        document.body.removeChild(tempInput);
+        alert("تم نسخ رقم الكاش: " + cashNumber);
+    }
+
+    document.getElementById("order-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const paymentNumber = document.getElementById("payment_number").value;
+        const contactNumber = document.getElementById("contact_number").value;
+        const serviceType = document.getElementById("service_type").value;
+        const platform = document.getElementById("platform").value;
+        const quantity = document.getElementById("quantity").value;
+
+        const message = `طلب جديد من: ${name}\nرقم التحويل: ${paymentNumber}\nرقم التواصل: ${contactNumber}\nالنوع: ${serviceType}\nالمنصة: ${platform}\nالعدد المطلوب: ${quantity}`;
+
+        const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن الخاص بالبوت
+        const chatId = "7862056955";  // معرف الدردشة الذي زودتني به
+
+        const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (data.ok) {
+                    alert("تم إرسال الطلب بنجاح!");
+                } else {
+                    alert("حدث خطأ في إرسال الطلب.");
+                }
+            })
+            .catch(error => {
+                alert("حدث خطأ في الاتصال بالبوت.");
+            });
+    });
+</script>
+
+</body>
+</html>
