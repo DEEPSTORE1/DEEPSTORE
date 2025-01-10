@@ -206,8 +206,8 @@
 
         const message = `طلب جديد من: ${name}\nرقم التحويل: ${paymentNumber}\nرقم التواصل: ${contactNumber}\nالنوع: ${serviceType}\nالمنصة: ${platform}\nالعدد المطلوب: ${quantity}\nالرابط: ${link}`;
 
-        const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن الخاص بالبوت
-        const chatId = "7862056955";  // معرف الدردشة الذي زودتني به
+        const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  
+        const chatId = "7862056955";  
 
         const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
@@ -215,7 +215,7 @@
             .then(response => response.json())
             .then(data => {
                 if (data.ok) {
-                    alert("تم إرسال الطلب بنجاح!");
+                    window.location.href = "confirmation.html";
                 } else {
                     alert("حدث خطأ في إرسال الطلب.");
                 }
