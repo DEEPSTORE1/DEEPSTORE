@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متجر DEEPSTORE ⚡</title>
+    
+    <!-- استيراد الخطوط -->
+    <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Creepster&display=swap" rel="stylesheet">
+
+    <style>
+        /* الخلفية المخيفة */
+        body {
+            font-family: 'Reem Kufi', sans-serif;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), #000;
+            color: #dcdcdc;
+            text-align: center;
+            direction: rtl;
+            overflow-x: hidden;
+        }
+
+        /* الهيدر */
+        header {
+            background: black;
+            padding: 20px;
+            border-bottom: 3px solid red;
+            position: relative;
+        }
+
+        /* عنوان المتجر */
+        h1 {
+            font-family: 'Creepster', cursive;
+            font-size: 3rem;
+            color: red;
+            text-shadow: 0 0 15px red, 0 0 30px red;
+            animation: flicker 1.5s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* الحاوية */
+        .container {
+            margin: 20px auto;
+            max-width: 400px;
+            background: rgba(20, 20, 20, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px red;
+            border: 3px solid red;
+        }
+
+        /* المدخلات */
+        select, input {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 2px solid red;
+            border-radius: 10px;
+            background-color: #1a1a1a;
+            color: #dcdcdc;
+            font-size: 1rem;
+        }
+
+        /* زر الشراء */
+        button {
+            background-color: red;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            animation: pulse 1.5s infinite;
+        }
+
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px darkred;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* نتيجة الحساب */
+        .result, #orderConfirmation {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #00ff99;
+            background-color: rgba(20, 20, 20, 0.95);
+            padding: 12px;
+            border-radius: 10px;
+            border: 2px solid red;
+            display: none;
+        }
+
+        /* أيقونة واتساب */
+        .whatsapp-icon {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #25D366;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 10px #25D366;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-icon img {
+            width: 30px;
+            height: 30px;
+        }
+
+        .whatsapp-icon:hover {
+            transform: scale(1.1);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>DEEP    STORE</h1>
+        <p>أفضل متجر لبيع خدمات التيك توك</p>
+    </header>
+    
+    <div class="container">
+        <label for="service">اختر الخدمة 🔽:</label>
+        <select id="service" onchange="calculatePrice()">
+            <option value="75">متابعين تيك توك (بدون ضمان) - 75EGP/1000</option>
+            <option value="88">متابعين تيك توك (مع ضمان) - 88EGP/1000</option>
+            <option value="7">لايكات تيك توك ❤️ - 7EGP/1000</option>
+            <option value="50">مشاهدات فيديو تيك توك 🎥 - 50EGP/1000</option>
+            <option value="30">مشاركات فيديو تيك توك 🔄 - 30EGP/1000</option>
+            <option value="50">مشاهدات لايف تيك توك 👀 - 50EGP/1000</option>
+            <option value="15">حفظ فيديو تيك توك 💾 - 15EGP/1000</option>
+        </select>
+
+        <label for="quantity">أدخل الكمية المطلوبة (الحد الأدنى 20) 🔢:</label>
+        <input type="number" id="quantity" min="20" placeholder="20" onchange="calculatePrice()">
+
+        <div class="result" id="result"></div>
+
+        <button onclick="showOrderForm()">🛒 إنشاء طلب</button>
+
+        <div id="orderForm" style="display: none;">
+            <p><b>رقم تحويل الأموال 📞: 01070849331. سيتم تنفيذ الطلب بعد التأكد من استلام المال.</b></p>
+            <form onsubmit="createOrder(event)">
+                <label for="orderService">الخدمة المطلوبة:</label>
+                <select id="orderService">
+                    <option value="متابعين تيك توك (بدون ضمان)">متابعين تيك توك (بدون ضمان)</option>
+                    <option value="متابعين تيك توك (مع ضمان)">متابعين تيك توك (مع ضمان)</option>
+                    <option value="لايكات تيك توك ❤️">لايكات تيك توك ❤️</option>
+                    <option value="مشاهدات فيديو تيك توك 🎥">مشاهدات فيديو تيك توك 🎥</option>
+                    <option value="مشاركات فيديو تيك توك 🔄">مشاركات فيديو تيك توك 🔄</option>
+                    <option value="مشاهدات لايف تيك توك 👀">مشاهدات لايف تيك توك 👀</option>
+                    <option value="حفظ فيديو تيك توك 💾">حفظ فيديو تيك توك 💾</option>
+                </select>
+
+                <label for="orderQuantity">الكمية المطلوبة:</label>
+                <input type="number" id="orderQuantity" min="20" placeholder="20" required>
+
+                <label for="contactNumber">رقم التواصل 📞:</label>
+                <input type="text" id="contactNumber" placeholder="رقم التواصل" required>
+
+                <label for="transferNumber">رقم التحويل 💳:</label>
+                <input type="text" id="transferNumber" placeholder="رقم التحويل" required>
+
+                <button type="submit">📩 إرسال الطلب</button>
+            </form>
+        </div>
+
+        <div id="orderConfirmation"></div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const service = document.getElementById("service").value;
+            const quantity = document.getElementById("quantity").value;
+            const totalPrice = (parseFloat(service) / 1000) * quantity;
+            document.getElementById("result").innerText = `💰 السعر الإجمالي: ${totalPrice.toFixed(2)} EGP`;
+            document.getElementById("result").style.display = "block";
+        }
+
+        function showOrderForm() {
+            document.getElementById("orderForm").style.display = "block";
+        }
+
+        function createOrder(event) {
+            event.preventDefault();
+
+            const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن
+            const chatId = "7862056955";  // المعرف
+
+            const name = document.getElementById("name").value;
+            const contactNumber = document.getElementById("contactNumber").value;
+            const transferNumber = document.getElementById("transferNumber").value;
+            const service = document.getElementById("service").options[document.getElementById("service").selectedIndex].text;
+            const quantity = document.getElementById("quantity").value;
+
+            const message = `📢 طلب جديد من DEEPSTORE:\n\n` +
+                            `👤 الاسم: ${name}\n` +
+                            `📞 رقم التواصل: ${contactNumber}\n` +
+                            `💳 رقم التحويل: ${transferNumber}\n` +
+                            `🛠 الخدمة: ${service}\n` +
+                            `🔢 الكمية: ${quantity}`;
+
+            const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.ok) {
+                        document.getElementById("orderConfirmation").innerText = "✅ تم إنشاء الطلب بنجاح!";
+                        document.getElementById("orderConfirmation").style.display = "block";
+                        document.getElementById("orderForm").style.display = "none";
+                    } else {
+                        alert("❌ حدث خطأ أثناء إرسال الطلب.");
+                    }
+                })
+                .catch(error => {
+                    alert("❌ تأكد من صحة التوكن والمعرف.");
+                });
+        }
+    </script>
+
+    <!-- أيقونة واتساب -->
+    <a href="https://wa.me/13344146976" target="_blank" class="whatsapp-icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+    </a>
+
+</body>
+</html>
