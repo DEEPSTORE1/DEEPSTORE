@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@700&family=Creepster&display=swap" rel="stylesheet">
 
     <style>
-        /* الخلفية المخيفة */
         body {
             font-family: 'Reem Kufi', sans-serif;
             background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png'), #000;
@@ -19,7 +18,6 @@
             overflow-x: hidden;
         }
 
-        /* الهيدر */
         header {
             background: black;
             padding: 20px;
@@ -27,7 +25,6 @@
             position: relative;
         }
 
-        /* عنوان المتجر */
         h1 {
             font-family: 'Creepster', cursive;
             font-size: 3rem;
@@ -42,7 +39,6 @@
             100% { opacity: 1; }
         }
 
-        /* الحاوية */
         .container {
             margin: 20px auto;
             max-width: 400px;
@@ -53,7 +49,6 @@
             border: 3px solid red;
         }
 
-        /* المدخلات */
         select, input {
             width: 100%;
             padding: 12px;
@@ -65,7 +60,6 @@
             font-size: 1rem;
         }
 
-        /* زر الشراء */
         button {
             background-color: red;
             color: white;
@@ -88,7 +82,6 @@
             100% { transform: scale(1); }
         }
 
-        /* نتيجة الحساب */
         .result, #orderConfirmation {
             margin-top: 20px;
             font-weight: bold;
@@ -101,43 +94,17 @@
             display: none;
         }
 
-        /* أيقونة واتساب */
-        .whatsapp-icon {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #25D366;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 10px #25D366;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .whatsapp-icon img {
-            width: 30px;
-            height: 30px;
-        }
-
-        .whatsapp-icon:hover {
-            transform: scale(1.1);
-        }
-
     </style>
 </head>
 <body>
     <header>
-        <h1>DEEP    STORE</h1>
+        <h1>DEEPSTORE</h1>
         <p>أفضل متجر لبيع خدمات التيك توك</p>
     </header>
     
     <div class="container">
         <label for="service">اختر الخدمة 🔽:</label>
-        <select id="service" onchange="calculatePrice()">
+        <select id="service">
             <option value="75">متابعين تيك توك (بدون ضمان) - 75EGP/1000</option>
             <option value="88">متابعين تيك توك (مع ضمان) - 88EGP/1000</option>
             <option value="7">لايكات تيك توك ❤️ - 7EGP/1000</option>
@@ -148,16 +115,22 @@
         </select>
 
         <label for="quantity">أدخل الكمية المطلوبة (الحد الأدنى 20) 🔢:</label>
-        <input type="number" id="quantity" min="20" placeholder="20" onchange="calculatePrice()">
-
-        <div class="result" id="result"></div>
+        <input type="number" id="quantity" min="20" placeholder="20">
 
         <button onclick="showOrderForm()">🛒 إنشاء طلب</button>
 
         <div id="orderForm" style="display: none;">
-            <p><b>رقم تحويل الأموال 📞: 01070849331. سيتم تنفيذ الطلب بعد التأكد من استلام المال.</b></p>
             <form onsubmit="createOrder(event)">
-                <label for="orderService">الخدمة المطلوبة:</label>
+                <label for="name">👤 الاسم:</label>
+                <input type="text" id="name" placeholder="أدخل اسمك" required>
+
+                <label for="contactNumber">📞 رقم التواصل:</label>
+                <input type="text" id="contactNumber" placeholder="رقم التواصل" required>
+
+                <label for="transferNumber">💳 رقم التحويل:</label>
+                <input type="text" id="transferNumber" placeholder="رقم التحويل" required>
+
+                <label for="orderService">🛠 اختر الخدمة:</label>
                 <select id="orderService">
                     <option value="متابعين تيك توك (بدون ضمان)">متابعين تيك توك (بدون ضمان)</option>
                     <option value="متابعين تيك توك (مع ضمان)">متابعين تيك توك (مع ضمان)</option>
@@ -168,14 +141,8 @@
                     <option value="حفظ فيديو تيك توك 💾">حفظ فيديو تيك توك 💾</option>
                 </select>
 
-                <label for="orderQuantity">الكمية المطلوبة:</label>
+                <label for="orderQuantity">🔢 الكمية المطلوبة:</label>
                 <input type="number" id="orderQuantity" min="20" placeholder="20" required>
-
-                <label for="contactNumber">رقم التواصل 📞:</label>
-                <input type="text" id="contactNumber" placeholder="رقم التواصل" required>
-
-                <label for="transferNumber">رقم التحويل 💳:</label>
-                <input type="text" id="transferNumber" placeholder="رقم التحويل" required>
 
                 <button type="submit">📩 إرسال الطلب</button>
             </form>
@@ -185,14 +152,6 @@
     </div>
 
     <script>
-        function calculatePrice() {
-            const service = document.getElementById("service").value;
-            const quantity = document.getElementById("quantity").value;
-            const totalPrice = (parseFloat(service) / 1000) * quantity;
-            document.getElementById("result").innerText = `💰 السعر الإجمالي: ${totalPrice.toFixed(2)} EGP`;
-            document.getElementById("result").style.display = "block";
-        }
-
         function showOrderForm() {
             document.getElementById("orderForm").style.display = "block";
         }
@@ -200,21 +159,17 @@
         function createOrder(event) {
             event.preventDefault();
 
-            const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  // التوكن
-            const chatId = "7862056955";  // المعرف
+            const botToken = "7997971423:AAGDF5wvUJgbTr9-E4OrUsAFxmhIOhozsOM";  
+            const chatId = "7862056955";  
 
             const name = document.getElementById("name").value;
             const contactNumber = document.getElementById("contactNumber").value;
             const transferNumber = document.getElementById("transferNumber").value;
-            const service = document.getElementById("service").options[document.getElementById("service").selectedIndex].text;
-            const quantity = document.getElementById("quantity").value;
+            const service = document.getElementById("orderService").value;
+            const quantity = document.getElementById("orderQuantity").value;
 
             const message = `📢 طلب جديد من DEEPSTORE:\n\n` +
-                            `👤 الاسم: ${name}\n` +
-                            `📞 رقم التواصل: ${contactNumber}\n` +
-                            `💳 رقم التحويل: ${transferNumber}\n` +
-                            `🛠 الخدمة: ${service}\n` +
-                            `🔢 الكمية: ${quantity}`;
+                            `👤 الاسم: ${name}\n📞 رقم التواصل: ${contactNumber}\n💳 رقم التحويل: ${transferNumber}\n🛠 الخدمة: ${service}\n🔢 الكمية: ${quantity}`;
 
             const url = `https://api.telegram.org/bot${botToken}/sendMessage?chat_id=${chatId}&text=${encodeURIComponent(message)}`;
 
@@ -234,11 +189,5 @@
                 });
         }
     </script>
-
-    <!-- أيقونة واتساب -->
-    <a href="https://wa.me/13344146976" target="_blank" class="whatsapp-icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-    </a>
-
 </body>
 </html>
